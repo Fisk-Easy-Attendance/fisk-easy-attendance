@@ -33,10 +33,9 @@ Follow these steps to set up the Easy Attendance project on your local machine:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone <YOUR_GITHUB_REPOSITORY_URL>
+    git clone https://github.com/Fisk-Easy-Attendance/fisk-easy-attendance
     cd EasyAttendance
     ```
-    *(Replace `<YOUR_GITHUB_REPOSITORY_URL>` with the actual URL of your repository once you create it on GitHub.)*
 
 2.  **Install Dependencies:**
     It is highly recommended to create a virtual environment to isolate the project dependencies.
