@@ -61,7 +61,7 @@ Follow these steps to set up the Easy Attendance project on your local machine:
     * Obtain your Firebase project's configuration details (API key, auth domain, database URL, etc.). This information is usually found in the Firebase project settings.
 
 4.  **Configure Firebase Credentials:**
-    * Create a configuration file in your project directory.
+    * Add configuration information to serviceAccountKey.json.
     * Paste your Firebase configuration details into this file as a Python dictionary:
 
 5.  **Run the Application:**
