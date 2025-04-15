@@ -8,36 +8,37 @@ The facial recognition logic behind this project is based on the principles outl
 
 ## Key Features
 
-* **Automated Attendance:** Marks student attendance automatically through facial recognition.
-* **Real-time Analysis:** Utilizes OpenCV for real-time video stream processing and facial detection.
-* **Secure Data Storage:** Employs Firebase for storing student data, facial embeddings, and attendance records.
-* **Easy to Use:** Provides a user-friendly interface (intended for future development) for managing student data and viewing attendance reports.
-* **Scalable:** Designed to handle a large number of students with efficient processing.
+* **Automated Attendance:** Marks student attendance automatically through facial recognition
+* **Real-time Analysis:** Utilizes OpenCV for real-time video stream processing and facial detection
+* **Secure Data Storage:** Employs Firebase for storing student data, facial embeddings, and attendance records
+* **Easy to Use:** Provides a user-friendly interface for managing student data and viewing attendance reports
+* **Scalable:** Designed to handle a large number of students with efficient processing
+* **Automatic Enrollment:** Adds new students to the database when they are first recognized
 
 ## Technologies Used
 
-* **Python:** The primary programming language.
-* **OpenCV (cvzone, cv2):** For real-time video capture and facial analysis.
-* **face-recognition:** A Python library for face recognition based on dlib's state-of-the-art face recognition built with deep learning.
-* **dlib:** Contains the implementation of modern C++ algorithms used by the `face-recognition` library.
+* **Python:** The primary programming language
+* **OpenCV (cvzone, cv2):** For real-time video capture and facial analysis
+* **face-recognition:** A Python library for face recognition based on dlib's state-of-the-art face recognition built with deep learning
+* **dlib:** Contains the implementation of modern C++ algorithms used by the `face-recognition` library
 * **Firebase:** A Backend-as-a-Service (BaaS) platform used for:
-    * **Database:** Storing student information, facial embeddings, and attendance logs.
-    * **(Potentially) Authentication:** Managing user accounts (for administrators).
-* **NumPy:** For numerical computations and array manipulation.
-* **Pillow (PIL):** For image processing tasks.
-* **Other supporting libraries:** As listed in the `requirements.txt` (to be generated).
+    * **Database:** Storing student information, facial embeddings, and attendance logs
+    * **(Potentially) Authentication:** Managing user accounts (for administrators)
+* **NumPy:** For numerical computations and array manipulation
+* **Pillow (PIL):** For image processing tasks
+* **Other supporting libraries:** As listed in the `requirements.txt`
 
 ## Installation
 
 Follow these steps to set up the Easy Attendance project on your local machine:
 
-1.  **Clone the Repository:**
+1. **Clone the Repository:**
     ```bash
     git clone https://github.com/Fisk-Easy-Attendance/fisk-easy-attendance
     cd EasyAttendance
     ```
 
-2.  **Install Dependencies:**
+2. **Install Dependencies:**
     It is highly recommended to create a virtual environment to isolate the project dependencies.
 
     **On macOS and Linux:**
@@ -55,18 +56,47 @@ Follow these steps to set up the Easy Attendance project on your local machine:
     pip install --upgrade pip
     pip install -r requirements.txt
     ```
-3.  **Set up Firebase:**
-    * Create a new project on the [Firebase Console](https://console.firebase.google.com/).
-    * Set up a Firebase Realtime Database.
-    * Obtain your Firebase project's configuration details (API key, auth domain, database URL, etc.). This information is usually found in the Firebase project settings.
 
-4.  **Configure Firebase Credentials:**
-    * Add configuration information to serviceAccountKey.json.
-    * Paste your Firebase configuration details into this file as a Python dictionary:
+3. **Set up Firebase:**
+    * Create a new project on the [Firebase Console](https://console.firebase.google.com/)
+    * Set up a Firebase Realtime Database
+    * Download your Firebase Admin SDK private key JSON file
+    * Rename the downloaded file to `serviceAccountKey.json` and place it in the root directory of your project
 
-5.  **Run the Application:**
-    Navigate to the project directory in your terminal and run the main script (e.g., `main.py`):
+## Usage
 
+1. **Run the main application:**
     ```bash
     python main.py
     ```
+
+2. **For adding new students to the database:**
+    ```bash
+    python AddDataToDatabase.py
+    ```
+
+3. **To generate face encodings:**
+    ```bash
+    python EncodeGenerator.py
+    ```
+
+The application workflow includes:
+1. **Enroll Students:** Capture images of students and store their facial embeddings in the Firebase database, linked to their student IDs
+2. **Mark Attendance:** Run the real-time facial recognition system, which will:
+    * Capture video from a camera
+    * Detect faces in the video stream
+    * Compare detected faces with the stored facial embeddings
+    * Mark the attendance of recognized students in the Firebase database
+
+## Requirements
+- Python 3.7 or higher
+- Webcam
+- Stable internet connection for Firebase integration
+- Required Python packages (listed in requirements.txt)
+
+## Project Structure
+- `main.py`: Main application file
+- `AddDataToDatabase.py`: Script for adding new students
+- `EncodeGenerator.py`: Script for generating face encodings
+- `Resources/`: Directory containing resource files
+- `Images/`: Directory for storing student images
